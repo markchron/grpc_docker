@@ -53,15 +53,3 @@ $ pushd cmake/build
 $ cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
 $ make -j
 ```
-
-Or make it automatic during build container
-```
-# install protobuf first, then grpc
-ENV GRPC_RELEASE_TAG v1.48.1
-RUN git clone --recurse-submodules -b ${GRPC_RELEASE_TAG} \
---depth 1 --shallow-submodules https://github.com/grpc/grpc \
-/var/local/git/grpc \
-&& cd /var/local/git/grpc \
-&& cd /var/local/git/grpc && \
-    make -j$(nproc) && make install && make clean && ldconfig
-```

@@ -9,8 +9,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN
 RUN apt-get update \
  && apt-get install -y \
- build-essential autoconf git pkg-config \
- automake libtool curl cmake make g++ unzip \
+ build-essential autoconf libtool pkg-config \
+ git cmake curl g++ unzip make \
  && groupadd --gid ${USER_GID} ${USERNAME} \
  && useradd -s /bin/bash --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
  # [可选] 添加sudo命令
