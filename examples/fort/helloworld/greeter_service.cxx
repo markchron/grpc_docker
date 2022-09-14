@@ -22,13 +22,17 @@ using helloworld::HelloReply;
 using helloworld::HelloRequest;
 
 // Logic and data behind the server's behavior.
+// Implement all of the service's methods - these will be invoked by the running gRPC server
 class GreeterServiceImpl final : public Greeter::Service {
+
   Status SayHello(ServerContext* context, const HelloRequest* request,
                   HelloReply* reply) override {
-    std::string prefix("Hello ");
+    std::string prefix("Hello from Fortran,");
     reply->set_message(prefix + request->name());
     return Status::OK;
   }
+
+
 };
 
 extern "C" {
@@ -46,6 +50,7 @@ void RunServer() {
 
   grpc::EnableDefaultHealthCheckService(true);
   grpc::reflection::InitProtoReflectionServerBuilderPlugin();
+
   ServerBuilder builder;
   // Listen on the given address without any authentication mechanism.
   builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
