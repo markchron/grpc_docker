@@ -11,10 +11,6 @@ $ source .grenv/bin/activate
 $ python3 -m venv .grenv
 $ source .grenv/bin/activate
 $ python3 -m pip install --upgrade pip
-# Install gRPC
-$ python3 -m pip install grpcio
-# Install gRPC tools
-$ python3 -m pip install grpcio-tools
 ```
 
 Or try the following (not test yet)
@@ -33,6 +29,10 @@ PS C:\Users\Mark\...\gRPC> Set-ExecutionPolicy Unrestricted -Scope Process
 
 # Example
 ```
+# Install gRPC
+$ python3 -m pip install grpcio
+# Install gRPC tools
+$ python3 -m pip install grpcio-tools
 # Clone the repository to get the example code:
 $ git clone -b v1.46.3 --depth 1 --shallow-submodules https://github.com/grpc/grpc
 # Navigate to the "hello, world" Python example:
