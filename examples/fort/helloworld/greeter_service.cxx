@@ -32,7 +32,12 @@ class GreeterServiceImpl final : public Greeter::Service {
 };
 
 extern "C" {
+    void runserver_();
     void RunServer();
+}
+
+void runserver_(){
+  RunServer();
 }
 
 void RunServer() {

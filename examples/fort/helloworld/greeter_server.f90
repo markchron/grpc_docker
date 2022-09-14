@@ -1,7 +1,8 @@
 program server_fort
 
-use greeter_interface
 implicit none
+
+external :: RunServer
 
 call RunServer
 
