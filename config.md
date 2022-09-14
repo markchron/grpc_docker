@@ -53,3 +53,19 @@ $ pushd cmake/build
 $ cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
 $ make -j
 ```
+
+# docker build
+`docker build --no-cache --pull --force-rm -t markchron/protoc:cxx -f protoc.dockerfile .`
+
+protoc.dockerfile 
+```
+RUN apt-get update \
+&& apt-get install unzip -y \
+&& wget -q -O protobuf-cpp-3.21.5.tar.gz \
+https://github.com/protocolbuffers/protobuf/releases/download/v21.5/protobuf-cpp-3.21.5.tar.gz \
+&& tar xzvf protobuf-cpp-3.21.5.tar.gz \
+&& move path/to/protoc /usr/local/bin/protoc \
+&& rm protobuf-cpp-3.21.5.tar.gz
+
+WORKDIR /path/to/example
+```
