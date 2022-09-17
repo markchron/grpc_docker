@@ -18,7 +18,8 @@ If you already install WSL, check its version by open PowerShell or command prom
   - Type the following command to convert the distro from WSL1 to WSL2 `wsl --set-version DISTRO_NAME 2` Make sure `DISTRO_NAME` is replaced by actual name of the linux distribution, for example `Ubuntu`
   - Check current wsl version by `wsl --list --verbose`
 
-[Install Docker Desktop on Windows](https://docs.docker.com/desktop/install/windows-install/)
+## [Install Docker Desktop on Windows](https://docs.docker.com/desktop/install/windows-install/)
+
 	
 
 # Package
@@ -55,8 +56,13 @@ $ make -j
 ```
 
 # docker build
+
+The following command build docker image on terminal. 
+
 `docker build --no-cache --pull --force-rm -t markchron/protoc:cxx -f protoc.dockerfile .`
 
+
+## Dockerfile sample with protocolbuffer
 protoc.dockerfile 
 ```
 RUN apt-get update \
