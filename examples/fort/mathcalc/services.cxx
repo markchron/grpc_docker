@@ -31,8 +31,10 @@ class MathServiceImp final : public MathCalc::Service {
 };
 
 extern "C" {
-    void RunServer_();
     void RunServer();
+    Server* CreateServerPtr(const char *);
+//    std::unique_ptr<Server> CreateServerPtr(const char *);
+    void InitialServer(Server*);
 }
 
 void RunServer() {
@@ -49,6 +51,28 @@ void RunServer() {
     server->Wait();
 }
 
-void RunServer_() {
-    RunServer();
+// void RunServer_() {
+//     RunServer();
+// }
+
+Server* CreateServerPtr(const char *server_address) {
+    MathServiceImp service;
+    ServerBuilder builder;
+    builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
+    builder.RegisterService(&service);
+
+    std::unique_ptr<Server> _server(builder.BuildAndStart());
+//    _server->Wait();
+    _server->Start();
+
+    Server * server = _server.get();
+   return server;
+}
+
+void InitialServer(Server* server) {
+    server->Wait();
+}
+
+void DeleteServerPtr(Server* server){
+    delete server;
 }

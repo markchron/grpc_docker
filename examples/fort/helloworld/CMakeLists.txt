@@ -57,3 +57,13 @@ set(hw_fort_srcs
 
 add_executable(server_fort ${hw_fort_srcs})
 target_link_libraries(server_fort hw_grpc_proto ${_REFLECTION} ${_GRPC_GRPCPP} ${_PROTOBUF_LIBPROTOBUF})
+
+
+set(hw_async_srcs
+${CMAKE_CURRENT_SOURCE_DIR}/greeter_async_server.f90
+${CMAKE_CURRENT_SOURCE_DIR}/greeter_async.f90
+${CMAKE_CURRENT_SOURCE_DIR}/greeter_async.cxx
+)
+
+add_executable(async_fort ${hw_async_srcs})
+target_link_libraries(async_fort hw_grpc_proto ${_REFLECTION} ${_GRPC_GRPCPP} ${_PROTOBUF_LIBPROTOBUF})
