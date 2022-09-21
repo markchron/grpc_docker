@@ -13,6 +13,7 @@ FortranCInterface_HEADER(
 
 include(../../cpp/cmake/common.cmake)
 
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 # Proto file
 get_filename_component(proto_name "mathcalc.proto" ABSOLUTE)
 get_filename_component(proto_path "${proto_name}" DIRECTORY)

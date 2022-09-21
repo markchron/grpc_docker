@@ -1,20 +1,26 @@
 module services_interface
-use, intrinsic :: iso_c_binding
 implicit none
 
 interface 
 
-! subroutine runserver() BIND(C, NAME="RunServer")
-! end subroutine
-
-function create_server_ptr(url) bind(C, NAME="CreateServerPtr")
-use, intrinsic :: iso_c_binding, only: c_ptr, c_char
-character(kind=c_char), intent(in) :: url(*)
-type(c_ptr) :: create_server_ptr
+function run_server(address) bind(C, NAME="RunServer")
+use, intrinsic:: iso_c_binding, only: c_char, c_ptr
+character(kind=c_char), intent(in) :: address
+type(c_ptr) :: run_server
 end function
 
-subroutine initial_server(server) bind(C, NAME="InitialServer")
-use, intrinsic :: iso_c_binding, only : c_ptr
+!subroutine run_server(address) bind(C, NAME="RunServer")
+!use, intrinsic:: iso_c_binding, only: c_char
+!character(kind=c_char), intent(in) :: address
+!end subroutine
+
+subroutine server_handler(server) bind(C, NAME="ServerHandler")
+use, intrinsic:: iso_c_binding, only : c_ptr
+type(c_ptr) :: server
+end subroutine
+
+subroutine destroy_server(server) bind(C, NAME="DestroyServer")
+use, intrinsic:: iso_c_binding, only : c_ptr
 type(c_ptr) :: server
 end subroutine
 

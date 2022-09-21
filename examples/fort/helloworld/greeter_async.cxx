@@ -75,10 +75,7 @@ class ServerImpl final {
                 new CallData(service_, cq_);
 
                 // The actual processing.
-                //-----------------------
-                std::string prefix("Hello from Async ");
-                reply_.set_message(prefix + request_.name() );
-
+                ProcessRequest();
                 // And we are done!
 
                 // Let the gRPC runtime know we've finished, using the memory address
@@ -94,6 +91,13 @@ class ServerImpl final {
         }
 
         private:
+
+        void ProcessRequest(){
+            // The actual processing.
+            //-----------------------
+            std::string prefix("Hello from Async ");
+            reply_.set_message(prefix + request_.name() );
+        }
         // The means of communication with the gRPC runtime for an asynchronous server.
         helloworld::Greeter::AsyncService* service_;
         // The producer-consumer queue where for asynchronous server notifications

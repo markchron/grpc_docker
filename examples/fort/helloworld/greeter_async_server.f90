@@ -7,4 +7,6 @@ address = "0.0.0.0:50051"//c_null_char
 
 call run_server(address)
 
+write(*, '(a)')address
+
 end program
